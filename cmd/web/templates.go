@@ -3,12 +3,15 @@ package main
 import (
     "html/template"
     "path/filepath"
+    "net/url"
     "time"
     "vinicius/snippetbox/pkg/models"
 )
 
 type templateData struct {
     CurrentYear int
+    FormErrors map[string]string
+    FormData url.Values 
     Snippet *models.Snippet
     Snippets []*models.Snippet
 }

@@ -2,19 +2,6 @@
 {{define "title"}}Home{{end}}
 {{define "body"}}
 <h2>Latest Snippets</h2>
-}
-ts, err = ts.ParseGlob(filepath.Join(dir, "*.layout.tmpl"))
-if err != nil {
-return nil, err
-}
-ts, err = ts.ParseGlob(filepath.Join(dir, "*.partial.tmpl"))
-if err != nil {
-return nil, err
-}
-cache[name] = ts
-}
-return cache, nil
-}
 {{if .Snippets}}
 <table>
 <tr>
@@ -24,8 +11,8 @@ return cache, nil
 </tr>
 {{range .Snippets}}
 <tr>
-<td><a href='/snippet?id={{.ID}}'>{{.Title}}</a></td>
-<!-- Use the new template function here -->
+<!-- Use the new semantic URL style-->
+<td><a href='/snippet/{{.ID}}'>{{.Title}}</a></td>
 <td>{{humanDate .Created}}</td>
 <td>#{{.ID}}</td>
 </tr>
